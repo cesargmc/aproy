@@ -1,0 +1,91 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.resenas {
+    min-height: 70dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contenedor-resena {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.viaje {
+    min-height: 60dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.resena {
+    max-width: 80%;
+    position: relative;
+    overflow: hidden;
+
+    img {
+        height: 12rem;
+        width: 12rem;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+}
+
+.slide {
+    text-align: center;
+
+    @include m.tablet {
+        padding: 0 16rem;
+        font-weight: 500;
+    }
+}
+
+.informacion {
+    span {
+        display: block;
+    }
+
+    .nombre {
+        font-size: 1.5rem;
+    }
+
+    .experiencia {
+        font-size: 1rem;
+        color: v.$primarioOscuro;
+    }
+
+    @include m.tablet {
+        .nombre {
+            font-size: 2rem;
+        }
+    
+        .experiencia {
+            font-size: 1.5rem;
+            color: v.$primarioOscuro;
+        }
+    }
+}
+
+.nav-btn {
+    display: none;
+    @include m.tablet {
+        display: block;
+        color: v.$negro;
+    }
+}
+
+.swp {
+    padding-top: 1rem;
+}

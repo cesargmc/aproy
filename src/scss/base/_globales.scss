@@ -1,0 +1,72 @@
+@use 'variables' as v;
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-padding-top: 0rem;
+    scrollbar-color: v.$secundario v.$blanco;
+    scrollbar-width: thin;
+}
+*, 
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+body {
+    font-family: v.$fuente_principal;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 1.6rem;
+
+    &.overflow-hidden {
+        overflow: hidden;
+    }
+}
+a {
+    text-decoration: none;
+    color: v.$primario;
+}
+h1, h2, h3 {
+    color: v.$primarioOscuro;
+    font-weight: bold;
+}
+
+h1 { font-size: 4rem; }
+
+h2 { font-size: 3.2rem; }
+
+h3 { font-size: 2.8rem; }
+
+img { max-width: 100%; }
+
+p { margin: 0 0 0.5rem 0; }
+
+.no-margin { margin: 0; }
+
+.no-padding { padding: 0; }
+
+.texto-centrado{ text-align: center; }
+
+.boton {
+    padding: 0.5rem 2rem;
+    background-color: v.$secundario;
+    border-radius: 0.5rem;
+    color: v.$blanco;
+    text-transform: uppercase;
+}
+
+.espacio { margin-top: 10rem; }
+
+.contenedor {
+    margin: 0 auto;
+    width: min(90%, 120rem);
+}
+
+.viaje > section {
+    padding-bottom: 2rem;
+}
+
+section:last-child {
+    padding-bottom: 0;
+}
+

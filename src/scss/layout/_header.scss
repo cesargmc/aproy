@@ -1,0 +1,178 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.header {
+    z-index: 1000;
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-shadow: .1rem .2rem .3rem rgba(0, 0, 0, .1);
+        background-color: v.$blanco;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    .logo {
+        height: 8.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu {
+        position: fixed;
+        z-index: 3;
+        top: 0;
+        right: 0;
+        display: grid;
+        place-items: center;
+        padding: 0;
+        width: 8.2rem;
+        height: 8.2rem;
+        font-size: 3rem;
+        color: v.$primario;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+    }
+
+    .menu svg:last-child {
+        display: none;
+    }
+
+    @include m.tablet {
+        .menu {
+            display: none;
+        }
+    }
+}
+
+body.open .menu svg:first-child {
+    display: none;
+}
+
+body.open .menu svg:last-child {
+    display: block;
+}
+
+.overlay {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgb(27 32 44 / 70%);
+    visibility: hidden;
+    opacity: 0;
+    backdrop-filter: blur(6px);
+    transition: 0.3s;
+}
+
+body.open .overlay {
+    visibility: visible;
+    opacity: 1;
+}
+
+aside {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 260px;
+    height: 100%;
+    padding: 18px 20px 20px;
+    background: v.$gris;
+    translate: 100% 0;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgb(0 0 0 / 70%);
+    @include m.tablet {
+        box-shadow: none;
+    }
+
+    & a {
+        display: flex;
+        align-items: center;
+        height: 5rem;
+        font-size: 3rem;
+    }
+}
+
+body.open aside {
+    translate: 0;
+}
+
+.barra {
+    text-align: center;
+
+    @include m.tablet {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.logo__texto {
+    font-weight: 700;
+}
+
+.navegacion {
+    display: none;
+
+    @include m.tablet {
+        display: flex;
+        width: 50%;
+        justify-content: right;
+    }
+}
+
+.navegacion-viaje {
+    display: none;
+
+    @include m.tablet {
+        display: flex;
+        width: 50%;
+        justify-content: right;
+    }
+}
+
+.navegacion__enlace {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+
+    @include m.tablet {
+        margin-left: 1.5rem;
+        font-size: 1.8rem;
+        margin-bottom: 0;
+
+        &:first-of-type {
+            margin: 0;
+        }
+    }
+
+    &:hover {
+        color: v.$primarioOscuro;
+    }
+}
+
+.cuenta {
+    display: none;
+    margin: 3rem;
+
+    @include m.tablet {
+        margin: 0;
+    }
+}
+
+.active {
+    color: v.$negro;
+}

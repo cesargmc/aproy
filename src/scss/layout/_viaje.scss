@@ -1,0 +1,41 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+section {
+    .viaje-contenido {
+        display: flex;
+        flex-direction: column;
+
+        @include m.tablet {
+            flex-direction: row-reverse;
+            gap: 2rem;
+        }
+    }
+
+    margin: 5rem 0;
+}
+
+.contenido-lista {
+    @include m.tablet {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        text-decoration: none;
+    }
+
+    margin-bottom: 3rem;
+
+    .lista__informacion {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
+
+.contacto {
+    background-color: v.$secundario;
+    border-radius: 1rem;
+    color: v.$blanco;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+}

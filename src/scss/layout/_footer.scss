@@ -1,0 +1,15 @@
+@use 'base/variables' as v;
+
+.iconos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    a { height: 2rem; }
+    .whats { margin-right: 1rem;}
+    .face {margin-right: 0.6rem;}
+}
+
+.copyright {
+    color: v.$primario;
+}

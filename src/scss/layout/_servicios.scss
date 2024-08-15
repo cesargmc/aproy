@@ -1,0 +1,33 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.servicio {
+    min-height: 70dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.servicios {
+    display: grid;
+    grid-template-rows: 5 auto;
+
+    @include m.tablet {
+        grid-template-columns: 2fr 1fr 2fr 1fr 2fr;
+        column-gap: 2rem;
+    }
+}
+
+.servicios__contenido {
+    margin: 2rem 0;
+
+    @include m.tablet {
+        margin: 0;
+    }
+}
+
+.border{
+    border-top: 0.3rem solid v.$gris;
+    width: 100%;
+    margin: auto 0;
+}
