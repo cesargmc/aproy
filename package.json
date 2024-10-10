@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cesargmc/mirys"
+    "url": "git+https://github.com/cesargmc/mirys.git"
   },
   "keywords": [
     "SASS",
@@ -28,7 +28,7 @@
     "gulp": "^5.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-terser": "^2.1.0",
-    "sass": "^1.76.0",
+    "sass": "^1.79.2",
     "sharp": "^0.33.4"
   }
 }

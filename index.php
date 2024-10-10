@@ -1,3 +1,14 @@
+<?php
+    require 'php/config.php';
+    require 'php/conexion.php';
+    $db = new Database();
+    $con = $db->conectar();
+
+    $comando = $con->prepare("SELECT id, nombre FROM viajes WHERE estado=1");
+    $comando->execute();
+    $resultado = $comando ->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +21,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="build/css/app.css">
+    <link rel="stylesheet" href="build/css/cerrarS.css">
     <link rel="icon" href="src/img/myris.png" type="image/x-icon">
 </head>
 <body>
     <header class="header">
         <div class="barra contenedor">
             <div class="logo">
-                <a href="index.html"><h1 class="logo__texto">Miry's Viajes</h1></a>
+                <a href="index.php"><h1 class="logo__texto">Miry's Viajes</h1></a>
             </div>
 
             <!-- Menu Celular -->
@@ -41,6 +53,16 @@
                 <a href="#servicios" class="navegacion__enlace">Servicos</a>
                 <a href="#viajes" class="navegacion__enlace">Viajes</a>
                 <a href="#reseñas" class="navegacion__enlace">Reseñas</a>
+                <?php if (isset($_SESSION['user_name'])): ?>
+                    <div class="menuSalir">
+                        <a href="#" class="navegacion__enlace">Hola, <?php echo htmlspecialchars($_SESSION['user_name']); ?></a>
+                        <div class="menuSalir_diseño">
+                            <a href="php/cerrarS.php">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <a href="login.php" class="navegacion__enlace">Iniciar Sesión</a>
+                <?php endif; ?>
             </aside>
 
             <!-- Menu Tablet+ -->
@@ -49,8 +71,19 @@
                 <a href="#servicios" class="navegacion__enlace">Servicos</a>
                 <a href="#viajes" class="navegacion__enlace">Viajes</a>
                 <a href="#reseñas" class="navegacion__enlace">Reseñas</a>
+                <?php if (isset($_SESSION['user_name'])): ?>
+                    <div class="menuSalir">
+                        <a href="#" class="navegacion__enlace" style="text-decoration: none;color: #6d9773;font-size: 1.8rem;margin-left: 1.5rem;">Hola, <?php echo htmlspecialchars($_SESSION['user_name']); ?></a>
+                        <div class="menuSalir_diseño">
+                            <a href="php/cerrarS.php">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <a href="login.php" style="text-decoration: none;color: #6d9773;font-size: 1.8rem;margin-left: 1.5rem;">Iniciar Sesión</a>
+                <?php endif; ?>
             </nav>
         </div>
+
     </header>
 
     <div id="inicio" class="contenido">
@@ -119,8 +152,8 @@
 
             <section class="catalogos">
                 <picture>
-                    <source loading="lazy" srcset="/build/img/real-14.webp" type="image/webp">
-                    <source loading="lazy" srcset="/build/img/real-14.avif" type="image/avif">
+                    <source loading="lazy" srcet="build/img/real-14.webp" type="image/webp">
+                    <source loading="lazy" srcset="build/img/real-14.avif" type="image/avif">
                     <img class="catalogos__img" loading="lazy" src="/build/img/real-14.png" alt="Imagen viaje">
                 </picture>
                 <div class="catalogo__contenido">
@@ -155,7 +188,7 @@
                         </li>
                     </ul>
 
-                    <a href="real14.html" class="link">Leer más</a>
+                    <a href="real14.php" class="link">Leer más</a>
                 </div>
             </section><!-- SECCION VIAJES-->
         </section><!-- VIAJES -->

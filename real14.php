@@ -1,3 +1,14 @@
+<?php
+    require 'php/config.php';
+    require 'php/conexion.php';
+    $db = new Database();
+    $con = $db->conectar();
+
+    $comando = $con->prepare("SELECT id, nombre FROM viajes WHERE estado=1");
+    $comando->execute();
+    $resultado = $comando ->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="build/css/app.css">
+    <link rel="stylesheet" href="build/css/cerrarS.css">
     <link rel="icon" href="src/img/myris.png" type="image/x-icon">
 </head>
 <body>
@@ -33,18 +45,38 @@
                   </svg>
             </button>
             <aside>
-                <a href="index.html#incio" class="navegacion__enlace">Inicio</a>
-                <a href="index.html#servicios" class="navegacion__enlace">Servicos</a>
-                <a href="index.html#viajes" class="navegacion__enlace">Viajes</a>
-                <a href="index.html#reseñas" class="navegacion__enlace">Reseñas</a>
+                <a href="index.php#incio" class="navegacion__enlace">Inicio</a>
+                <a href="index.php#servicios" class="navegacion__enlace">Servicos</a>
+                <a href="index.php#viajes" class="navegacion__enlace">Viajes</a>
+                <a href="index.php#reseñas" class="navegacion__enlace">Reseñas</a>
+                <?php if (isset($_SESSION['user_name'])): ?>
+                    <div class="menuSalir">
+                        <a href="#" class="navegacion__enlace">Hola, <?php echo htmlspecialchars($_SESSION['user_name']); ?></a>
+                        <div class="menuSalir_diseño">
+                            <a href="php/cerrarS.php">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <a href="login.php" class="navegacion__enlace">Iniciar Sesión</a>
+                <?php endif; ?>
             </aside>
 
 
             <nav class="navegacion-viaje">
-                <a href="index.html#inicio" class="navegacion__enlace">Inicio</a>
-                <a href="index.html#servicios" class="navegacion__enlace">Servicos</a>
-                <a href="index.html#viajes" class="navegacion__enlace">Viajes</a>
-                <a href="index.html#reseñas" class="navegacion__enlace">Reseñas</a>
+                <a href="index.php#inicio" class="navegacion__enlace">Inicio</a>
+                <a href="index.php#servicios" class="navegacion__enlace">Servicos</a>
+                <a href="index.php#viajes" class="navegacion__enlace">Viajes</a>
+                <a href="index.php#reseñas" class="navegacion__enlace">Reseñas</a>
+                <?php if (isset($_SESSION['user_name'])): ?>
+                    <div class="menuSalir">
+                        <a href="#" class="navegacion__enlace" style="text-decoration: none;color: #6d9773;font-size: 1.8rem;margin-left: 1.5rem;">Hola, <?php echo htmlspecialchars($_SESSION['user_name']); ?></a>
+                        <div class="menuSalir_diseño">
+                            <a href="php/cerrarS.php">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <a href="login.php" style="text-decoration: none;color: #6d9773;font-size: 1.8rem;margin-left: 1.5rem;">Iniciar Sesión</a>
+                <?php endif; ?>
             </nav>
         </div>
     </header><!-- HEADER -->
