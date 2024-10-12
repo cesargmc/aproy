@@ -1,4 +1,4 @@
 # Dependencia
 /node_modules
 
-/includes
+includes/config/database.php
