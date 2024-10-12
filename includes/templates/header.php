@@ -17,7 +17,7 @@
     <header id="#header" class="header">
         <div class="barra contenedor">
             <div class="logo">
-                <a href="/index.php"><h1 class="logo__texto">Miry's Viajes</h1></a>
+                <a href="../../public/index.php"><h1 class="logo__texto">Miry's Viajes</h1></a>
             </div>
 
             <!-- Menu Celular -->
