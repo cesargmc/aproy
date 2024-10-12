@@ -7,7 +7,7 @@
     }
 
     // Importar la conexion
-    require 'includes/config/database.php';
+    require '../includes/config/database.php';
     $db = conectarDB();
 
     // Consultar
@@ -38,10 +38,10 @@
 
     // Redireccion en caso de que no exista el Id
     if(!$resultado->num_rows) {
-        header('Location: /');
+        header('Location: public/index.php');
     }
 
-    require 'includes/funciones.php';
+    require '../includes/funciones.php';
     incluirTemplate('headerViajes', $inicio = true);
 ?>
     <main class="contenedor">
@@ -49,7 +49,7 @@
             <h2><?php echo $viaje['titulo']; ?></h2>
 
             <div class="viaje-contenido">
-                <img class="viajes__img" loading="lazy" src="/imagenes/<?php echo $viaje['imagen']; ?>" alt="Imagen viaje">
+                <img class="viajes__img" loading="lazy" src="../imagenes/<?php echo $viaje['imagen']; ?>" alt="Imagen viaje">
 
                 <ul class="contenido-lista no-padding">
                     <li class="lista__informacion">
@@ -107,8 +107,8 @@
     
     <?php incluirTemplate('footer'); ?>
 
-    <script src="/build/js/modernizr.js"></script>
-    <script src="/build/js/swiper.js"></script>
+    <script src="../build/js/modernizr.js"></script>
+    <script src="../build/js/swiper.js"></script>
 </body>
 </html>
 

@@ -1,12 +1,18 @@
 <?php
-    // Validar Id
-    $id = $_GET['id'];
-    $id = filter_var($id, FILTER_VALIDATE_INT);
+    session_start();
 
-    if(!$id) {
-        header('Location: /admin');
+    if (!isset($_SESSION['usuario'])) {
+        header("Location: login.php");
+        exit();
     }
 
+    // Verificar el rol del usuario
+    $admin = $_SESSION['usuario']['admin'];
+    if ($admin != 1) {
+        // El usuario no es administrador
+        header("Location: ../../public/index.php");
+        exit();
+    }
     // Base de datos
     require '../../includes/config/database.php';
     $db = conectarDB();

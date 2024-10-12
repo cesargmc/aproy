@@ -1,15 +1,15 @@
 <?php
     // Base de datos
-    require 'includes/config/database.php';
+    require '../includes/config/database.php';
     $db = conectarDB();
 
     // Configuración SMTP para Mailtrap
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
-    require 'vendor/PHPMailer/PHPMailer/src/Exception.php';
-    require 'vendor/PHPMailer/PHPMailer/src/PHPMailer.php';
-    require 'vendor/PHPMailer/PHPMailer/src/SMTP.php';
+    require '../vendor/PHPMailer/PHPMailer/src/Exception.php';
+    require '../vendor/PHPMailer/PHPMailer/src/PHPMailer.php';
+    require '../vendor/PHPMailer/PHPMailer/src/SMTP.php';
 
     // Arreglo de mensaje errores
     $errores = [];
@@ -69,7 +69,7 @@
 
             if ($resultado) {
                 // Enviar el email para confirmar cuenta
-                $url = "http://localhost:3000/confirmar.php?resultado=2&?token=" . $token;
+                $url = "http://localhost:3000/public/confirmar.php?resultado=2&?token=" . $token;
 
                 $mail = new PHPMailer(true);
 
@@ -106,7 +106,7 @@
     }
 
     // Incluye el header
-    require 'includes/funciones.php';
+    require '../includes/funciones.php';
     incluirTemplate('headerAcciones');
 ?>
 

@@ -1,5 +1,5 @@
 <?php
-    require 'includes/funciones.php';
+    require '../includes/funciones.php';
     incluirTemplate('header', $inicio = true);
 ?>
 
@@ -61,7 +61,7 @@
             <h2 class="texto-centrado">Próximos Viajes</h2>
 
             <?php 
-                include 'includes/templates/anuncios.php'
+                include '../includes/templates/anuncios.php'
             ?>
         </section><!-- VIAJES -->
 

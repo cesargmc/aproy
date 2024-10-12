@@ -1,12 +1,12 @@
 <?php
-require 'includes/config/database.php';
+require '../includes/config/database.php';
 $db = conectarDB();
 
 // Obtener el token desde la URL
 $token = $_GET['token'];
 
 if (!$token) {
-    header('Location: /');
+    header('Location: /public/index.php');
     exit();
 }
 
@@ -29,7 +29,7 @@ if ($resultado && mysqli_num_rows($resultado) === 1) {
     echo "Token no válido o ya utilizado.";
 }
 
-    require 'includes/funciones.php';
+    require '../includes/funciones.php';
     incluirTemplate('header', $inicio = false);
 ?>
 

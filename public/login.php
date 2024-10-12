@@ -1,6 +1,6 @@
 <?php
     // Importar la conexión
-    require 'includes/config/database.php';
+    require '../includes/config/database.php';
     $db = conectarDB();
 
     // Autenticar el usuario
@@ -50,7 +50,7 @@
                         echo "</pre>";
 
                         if ($usuario['admin'] == 1) {
-                            header("Location: /admin/index.php");
+                            header("Location: ../admin/index.php");
                         } else {
                             header("Location: index.php");
                         }
@@ -66,7 +66,7 @@
     }
 
     // Incluye el header
-    require 'includes/funciones.php';
+    require '../includes/funciones.php';
     incluirTemplate('headerAcciones');
 ?>
 

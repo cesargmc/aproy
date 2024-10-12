@@ -36,18 +36,18 @@
             </button>
 
             <aside>
-                <a href="/index.php#inicio" class="navegacion__enlace">Inicio</a>
-                <a href="/index.php#servicios" class="navegacion__enlace">Servicos</a>
-                <a href="/index.php#viajes" class="navegacion__enlace">Viajes</a>
-                <a href="/index.php#reseñas" class="navegacion__enlace">Reseñas</a>
+                <a href="/public/index.php#inicio" class="navegacion__enlace">Inicio</a>
+                <a href="/public/index.php#servicios" class="navegacion__enlace">Servicos</a>
+                <a href="/public/index.php#viajes" class="navegacion__enlace">Viajes</a>
+                <a href="/public/index.php#reseñas" class="navegacion__enlace">Reseñas</a>
             </aside>
 
             <!-- Menu Tablet+ -->
             <nav class="navegacion">
-                <a href="/index.php#inicio" class="navegacion__enlace">Inicio</a>
-                <a href="/index.php#servicios" class="navegacion__enlace">Servicos</a>
-                <a href="/index.php#viajes" class="navegacion__enlace">Viajes</a>
-                <a href="/index.php#reseñas" class="navegacion__enlace">Reseñas</a>
+                <a href="/public/index.php#inicio" class="navegacion__enlace">Inicio</a>
+                <a href="/public/index.php#servicios" class="navegacion__enlace">Servicos</a>
+                <a href="/public/index.php#viajes" class="navegacion__enlace">Viajes</a>
+                <a href="/public/index.php#reseñas" class="navegacion__enlace">Reseñas</a>
             </nav>
         </div>
     </header>

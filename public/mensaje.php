@@ -2,7 +2,7 @@
     // Muostrar mensaje condicional
     $resultado = $_GET['resultado'] ?? null;
     
-    require 'includes/funciones.php';
+    require '../includes/funciones.php';
     incluirTemplate('header');
 ?>
 
