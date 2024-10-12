@@ -1,0 +1,58 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.alertas {
+    padding: 1rem 0;
+    display: hidden;
+}
+
+.alerta {
+    color: v.$blanco;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 0.25rem 0;
+    text-transform: uppercase;
+    text-align: center;
+
+    &.error { background-color: v.$rojo; }
+
+    &.exito { background-color: v.$verde; }
+}
+
+table.viajes {
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+
+    td { border: 0.5px solid v.$grisOscuro; }
+
+    thead {
+        background-color: v.$primario;
+
+        th {
+            color: v.$blanco;
+            padding: 2rem;
+            text-align: left;
+        }
+    }
+
+    tbody {
+        td { padding: 0 2rem 1.5rem 2rem; }
+    }
+
+
+    .imagen-tabla {
+        width: 10rem;
+        height: 10rem;
+        background-size: cover;
+        margin-top: 1.5rem;
+        border-radius: 0.8rem;
+    }
+}
+
+.imagen-sm {
+    width: 20rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+}

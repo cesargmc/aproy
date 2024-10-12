@@ -3,7 +3,7 @@
 html {
     font-size: 62.5%;
     box-sizing: border-box;
-    scroll-padding-top: 0rem;
+    scroll-padding-top: 15rem;
     scrollbar-color: v.$secundario v.$blanco;
     scrollbar-width: thin;
 }
@@ -11,6 +11,23 @@ html {
 *:before,
 *:after {
     box-sizing: inherit;
+}
+::-webkit-scrollbar {
+    width: 1rem; /* Ancho de la barra de desplazamiento */
+}
+  
+::-webkit-scrollbar-track {
+    background: v.$blanco; /* Color del fondo de la barra de desplazamiento */
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #ffd768; /* Color del deslizador */
+    border-radius: 1rem;    /* Bordes redondeados del deslizador */
+    border: 2px solid transparent; /* Borde alrededor del deslizador */
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background-color: v.$secundario; /* Color del deslizador al pasar el mouse */
 }
 body {
     font-family: v.$fuente_principal;
@@ -33,9 +50,9 @@ h1, h2, h3 {
 
 h1 { font-size: 4rem; }
 
-h2 { font-size: 3.2rem; }
+h2 { font-size: 5rem; }
 
-h3 { font-size: 2.8rem; }
+h3 { font-size: 2.8rem; margin: 0 0 2rem 0; }
 
 img { max-width: 100%; }
 
@@ -48,11 +65,13 @@ p { margin: 0 0 0.5rem 0; }
 .texto-centrado{ text-align: center; }
 
 .boton {
-    padding: 0.5rem 2rem;
+    padding: 1rem 2rem;
     background-color: v.$secundario;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     color: v.$blanco;
     text-transform: uppercase;
+    text-align: center;
+    border: none;
 }
 
 .espacio { margin-top: 10rem; }
@@ -69,4 +88,3 @@ p { margin: 0 0 0.5rem 0; }
 section:last-child {
     padding-bottom: 0;
 }
-

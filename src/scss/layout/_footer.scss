@@ -1,15 +1,48 @@
 @use 'base/variables' as v;
+@use 'base/mixins' as m;
 
-.iconos {
+.footer {
+    padding: 2rem 0 4rem 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    
-    a { height: 2rem; }
-    .whats { margin-right: 1rem;}
-    .face {margin-right: 0.6rem;}
-}
+    justify-content: space-evenly;
 
-.copyright {
-    color: v.$primario;
+    .copyright { margin: 0; }
+
+    .link {
+        color: v.$primario;
+        position: relative;
+        padding-bottom: 2px;
+        font-weight: 600;
+    }
+
+    .copyright,
+    .link {
+        font-size: 1.5rem;
+
+        @include m.tablet {
+            font-size: 2rem;
+        }
+    }
+    
+    .link::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: v.$primario;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+    
+    .link:hover::after {
+        transform: scaleX(1);
+    }
+
+    .contact {
+        display: flex;
+        gap: 1rem;
+    }
 }

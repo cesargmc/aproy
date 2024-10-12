@@ -6,6 +6,13 @@ section {
         display: flex;
         flex-direction: column;
 
+        .viajes__img {
+            width: 60rem;
+            height: 60rem;
+            background-size: cover;
+            border-radius: 1rem;
+        }
+
         @include m.tablet {
             flex-direction: row-reverse;
             gap: 2rem;
@@ -30,12 +37,10 @@ section {
         flex-direction: row;
         gap: 1rem;
     }
+
+    .actividades {
+        display: flex;
+        gap: 0.35rem;
+    }
 }
 
-.contacto {
-    background-color: v.$secundario;
-    border-radius: 1rem;
-    color: v.$blanco;
-    padding: 1rem 2rem;
-    text-transform: uppercase;
-}

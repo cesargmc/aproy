@@ -1,0 +1,75 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.seccion {
+    .seccion__contenido {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2rem;
+        font-size: 2rem;
+        margin: 2rem 0;
+        padding: 1.5rem;
+        border-radius: 2rem;
+        background: v.$blanco;
+        box-shadow:  20px 20px 60px #d9d9d9,
+                     -20px -20px 60px #ffffff;
+
+        @include m.desktop {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .seccion__img {
+            display: none;
+
+            @include m.desktop {
+                display: block;
+                border-radius: 1rem;
+                width: 40rem;
+                height: 40rem;
+                background-size: cover;
+            }
+        }
+    }
+}
+
+.seccion-info {
+    .fechas {
+        display: flex;
+        flex-direction: column;
+
+        @include m.tablet {
+            flex-direction: row;
+            gap: 2rem;
+        }
+
+        .label-fecha {
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        .fecha {
+            color: v.$primario;
+        }
+    }
+
+    .descripcion { margin: 0 0 2rem 0; }
+}
+
+.btn-viaje {
+    display: inline-block;
+    font-weight: bold;
+    max-width: 100%;
+}
+
+.contacto {
+    display: inline-block;
+    background-color: v.$grisOscuro;
+    margin-top: 1rem;
+    width: 21rem;
+
+    @include m.tablet {
+        margin-top: 0;
+    }
+}

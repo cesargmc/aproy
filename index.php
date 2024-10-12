@@ -1,64 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miry's Viajes</title>
-    <meta name="description" content="Página web de viajes Mirys">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="build/css/app.css">
-    <link rel="icon" href="src/img/myris.png" type="image/x-icon">
-</head>
-<body>
-    <header class="header">
-        <div class="barra contenedor">
-            <div class="logo">
-                <a href="index.html"><h1 class="logo__texto">Miry's Viajes</h1></a>
-            </div>
-
-            <!-- Menu Celular -->
-            <div class="overlay"></div>
-
-            <button class="menu">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#0c3b2e" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M4 6l16 0" />
-                    <path d="M4 12l16 0" />
-                    <path d="M4 18l16 0" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#0c3b2e" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M18 6l-12 12" />
-                    <path d="M6 6l12 12" />
-                  </svg>
-            </button>
-
-            <aside>
-                <a href="#inicio" class="navegacion__enlace">Inicio</a>
-                <a href="#servicios" class="navegacion__enlace">Servicos</a>
-                <a href="#viajes" class="navegacion__enlace">Viajes</a>
-                <a href="#reseñas" class="navegacion__enlace">Reseñas</a>
-            </aside>
-
-            <!-- Menu Tablet+ -->
-            <nav class="navegacion">
-                <a href="#inicio" class="navegacion__enlace">Inicio</a>
-                <a href="#servicios" class="navegacion__enlace">Servicos</a>
-                <a href="#viajes" class="navegacion__enlace">Viajes</a>
-                <a href="#reseñas" class="navegacion__enlace">Reseñas</a>
-            </nav>
-        </div>
-    </header>
-
-    <div id="inicio" class="contenido">
-        <div class="contenido__principal contenedor">
-            <p class="p1">Inicia un viaje con nosotros y diviértete!</p>
-            <p class="p2">Estamos aquí para hacer realidad tus sueños de viaje con experiencias inolvidables y servicios personalizados.</p>
-        </div>
-    </div><!-- CONTENIDO -->
+<?php
+    require 'includes/funciones.php';
+    incluirTemplate('header', $inicio = true);
+?>
 
     <main class="contenedor">
         <section id="servicios" class="servicio texto-centrado">
@@ -117,47 +60,9 @@
         <section id="viajes" class="catalogo">
             <h2 class="texto-centrado">Próximos Viajes</h2>
 
-            <section class="catalogos">
-                <picture>
-                    <source loading="lazy" srcset="/build/img/real-14.webp" type="image/webp">
-                    <source loading="lazy" srcset="/build/img/real-14.avif" type="image/avif">
-                    <img class="catalogos__img" loading="lazy" src="/build/img/real-14.png" alt="Imagen viaje">
-                </picture>
-                <div class="catalogo__contenido">
-                    <h3>Real de 14</h3>
-
-                    <ul class="contenido__enlace no-padding">
-                        <li class="lista">
-                            <i class="fa-regular fa-circle-check" style="color: #6d9773;"></i>
-                            8 al 10 de noviembre.
-                            <br>
-                            2 días y 1 noche.
-                        </li>
-                        <li class="lista">
-                            <i class="fa-regular fa-circle-check" style="color: #6d9773;"></i>
-                            Separa con $500, los lugares deben liquidarse 15 días antes del viaje.
-                            <br>
-                            El costo no incluye traslado en camioneta para cruce del túnel, alimentos ni propinas.
-                        </li>
-                        <li class="lista">
-                            <i class="fa-regular fa-circle-check" style="color: #6d9773;"></i>
-                            $1,950 p/p habitacion doble
-                            <br>
-                            $1,800 p/p habitacion triple
-                            <br>
-                            $1,750 p/p habitacion cuadruple
-                        </li>
-                        <li class="lista">
-                            <i class="fa-regular fa-circle-check" style="color: #6d9773;"></i>
-                            Salimos viernes en la noche
-                            <br>
-                            Regresamos el domingo después de mediodía
-                        </li>
-                    </ul>
-
-                    <a href="real14.html" class="link">Leer más</a>
-                </div>
-            </section><!-- SECCION VIAJES-->
+            <?php 
+                include 'includes/templates/anuncios.php'
+            ?>
         </section><!-- VIAJES -->
 
         <section id="reseñas" class="resenas">
@@ -219,44 +124,10 @@
         </section><!-- RESEÑAS -->
     </main>
 
-    <footer class="footer">
-        <div class="barra contenedor">
-            <div class="iconos">
-                <a class="whats" href="https://wa.me/8112586422" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="20" height="20" viewBox="0 0 22 22" stroke-width="1.5" stroke="#6d9773" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
-                        <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
-                    </svg>
-                </a>
+    <?php incluirTemplate('footer'); ?>
 
-                <a class="face" href="https://www.instagram.com/viajestours_myris/" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="20" height="20" viewBox="0 0 22 22" stroke-width="1.5" stroke="#6d9773" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
-                        <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                        <path d="M16.5 7.5l0 .01" />
-                    </svg>
-                </a>
-
-                <a href="https://www.facebook.com/profile.php?id=100030899392588" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="20" height="20" viewBox="0 0 21 21" stroke-width="1.5" stroke="#6d9773" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-                    </svg>
-                </a>
-            </div>
-
-            <div class="logo">
-                <h1 class="logo__texto">Miry's Viajes</h1>
-            </div>
-
-            <p class="copyright">©Myri's 2023</p>
-        </div>
-    </footer><!-- FOOTER -->
-
-    <script src="build/js/app.js"></script>
-    <script src="build/js/modernizr.js"></script>
-    <script src="build/js/swiper.js"></script>
+    <script src="/build/js/app.js"></script>
+    <script src="/build/js/modernizr.js"></script>
+    <script src="/build/js/swiper.js"></script>
 </body>
 </html>

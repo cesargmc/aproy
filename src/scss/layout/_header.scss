@@ -131,6 +131,7 @@ body.open aside {
         display: flex;
         width: 50%;
         justify-content: right;
+        align-items: center;
     }
 }
 
@@ -148,6 +149,30 @@ body.open aside {
     display: block;
     text-align: center;
     margin-bottom: 1rem;
+
+    @include m.tablet {
+        margin-left: 1.5rem;
+        font-size: 1.8rem;
+        margin-bottom: 0;
+
+        &:first-of-type {
+            margin: 0;
+        }
+    }
+
+    &:hover {
+        color: v.$primarioOscuro;
+    }
+}
+
+.navegacion__enlace-login {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+    background-color: v.$primario;
+    color: v.$blanco;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
 
     @include m.tablet {
         margin-left: 1.5rem;

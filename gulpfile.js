@@ -4,11 +4,15 @@ import { glob } from 'glob'
 import { src, dest, watch, series } from 'gulp'
 import * as dartSass from 'sass'
 import gulpSass from 'gulp-sass'
+import terser from 'gulp-terser'
+import sharp from 'sharp'
 
 const sass = gulpSass(dartSass)
 
-import terser from 'gulp-terser'
-import sharp from 'sharp'
+const paths = {
+    scss: 'src/scss/**/*.scss',
+    js: 'src/js/**/*.js'
+}
 
 export function js( done ) {
     src('src/js/app.js')
@@ -64,9 +68,9 @@ function procesarImagenes(file, outputSubDir) {
 }
 
 export function dev() {
-    watch('src/scss/**/*.scss', css )
-    watch('src/js/**/*.js', js )
-    watch('src/img/**/*.{png, jpg}', imagenes )
+    watch( paths.scss, css );
+    watch( paths.js, js );
+    watch('src/img/**/*.{png,jpg}', imagenes)
 }
 
 export default series( js, css, imagenes, dev )

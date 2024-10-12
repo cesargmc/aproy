@@ -1,0 +1,25 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+
+.boton-amarillo {
+    @include m.boton($amarillo, inline-block);
+}
+
+.boton-amarillo-block {
+    @include m.boton($amarillo, block);
+}
+
+.boton-verde {
+    @include m.boton($verde, inline-block);
+}
+
+.boton-gris-block {
+    @include m.boton($grisOscuro, block);
+    width: 100%;
+}
+
+.boton-naranja-block {
+    @include m.boton($secundario, block);
+    width: 100%;
+}
