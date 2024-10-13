@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miry's Viajes</title>
+    <title>Viajes & tours Miry's</title>
     <meta name="description" content="Página web de viajes Mirys">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +13,9 @@
 </head>
 <body>
     <header id="#header" class="header">
-        <div class="barra contenedor">
+        <div class="barra header-contenedor">
             <div class="logo">
-                <a href="../../public/index.php"><h1 class="logo__texto">Miry's Viajes</h1></a>
+                <a href="../../public/index.php"><h1 class="logo__texto">Viajes & tours Miry's</h1></a>
             </div>
 
             <!-- Menu Celular -->

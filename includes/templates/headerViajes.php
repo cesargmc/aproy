@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miry's Viajes</title>
+    <title>Viajes & tours Miry's</title>
     <meta name="description" content="Página web de viajes Mirys">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +14,9 @@
 </head>
 <body>
     <header id="#header" class="header">
-        <div class="barra contenedor">
+        <div class="barra header-contenedor">
             <div class="logo">
-                <a href="../../public/index.php"><h1 class="logo__texto">Miry's Viajes</h1></a>
+                <a href="../../public/index.php"><h1 class="logo__texto">Viajes & tours Miry's</h1></a>
             </div>
 
             <!-- Menu Celular -->
@@ -40,6 +41,7 @@
                 <a href="/public/index.php#servicios" class="navegacion__enlace">Servicos</a>
                 <a href="/public/index.php#viajes" class="navegacion__enlace">Viajes</a>
                 <a href="/public/index.php#reseñas" class="navegacion__enlace">Reseñas</a>
+                <a href="/public/login.php" class="navegacion__enlace">Acceder</a>
             </aside>
 
             <!-- Menu Tablet+ -->
@@ -55,7 +57,7 @@
 
     <?php if ($inicio): ?>
         <div id="inicio" class="contenido">
-            <div class="contenido__principal contenedor">
+            <div class="contenido__principal">
                 <p class="p1">Inicia un viaje con nosotros y diviértete!</p>
                 <p class="p2">Estamos aquí para hacer realidad tus sueños de viaje con experiencias inolvidables y servicios personalizados.</p>
             </div>

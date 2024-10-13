@@ -11,7 +11,7 @@
 }
 
 .boton-verde {
-    @include m.boton($verde, inline-block);
+    @include m.boton($primario, inline-block);
 }
 
 .boton-gris-block {

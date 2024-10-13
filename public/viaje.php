@@ -80,8 +80,7 @@
                             <h3>ACTIVIDADES</h3>
                             <?php foreach ($actividades as $actividad): ?>
                                 <div class="actividades">
-                                    <p class="actividades-p"><?php echo htmlspecialchars($actividad['nombre']); ?> -</p>
-                                    <p class="actividades=p">$<?php echo htmlspecialchars($actividad['precio']); ?></p>
+                                    <p class="actividades-p"><?php echo htmlspecialchars($actividad['nombre']); ?> - <span class="actividades=p">$<?php echo htmlspecialchars($actividad['precio']); ?></span></p>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -107,6 +106,28 @@
     
     <?php incluirTemplate('footer'); ?>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            menu();
+        })
+        
+        function toggleMenu() {
+            document.body.classList.toggle('open');
+        }
+
+        function closeMenu() {
+            document.body.classList.remove('open');
+        }
+
+        function menu() {
+            const menuButton = document.querySelector('.menu');
+            const overlay = document.querySelector('.overlay');
+
+            menuButton.addEventListener('click', toggleMenu);
+
+            overlay.addEventListener('click', closeMenu);
+        }
+    </script>
     <script src="../build/js/modernizr.js"></script>
     <script src="../build/js/swiper.js"></script>
 </body>

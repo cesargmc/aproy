@@ -1,6 +1,11 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
+.header-contenedor {
+    margin: 0 auto;
+    width: 98.5%;
+}
+
 .header {
     z-index: 1000;
     &.fixed {
@@ -24,7 +29,7 @@
     }
 
     .menu {
-        position: fixed;
+        position: absolute;
         z-index: 3;
         top: 0;
         right: 0;
@@ -89,7 +94,7 @@ aside {
     width: 260px;
     height: 100%;
     padding: 18px 20px 20px;
-    background: v.$gris;
+    background: v.$blanco;
     translate: 100% 0;
     transition: 0.3s;
     box-shadow: 0 0 20px rgb(0 0 0 / 70%);
@@ -169,10 +174,10 @@ body.open aside {
     display: block;
     text-align: center;
     margin-bottom: 1rem;
-    background-color: v.$primario;
+    background-color: v.$secundario;
     color: v.$blanco;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
+    padding: 1.3rem 2rem;
+    border-radius: 1.5rem;
 
     @include m.tablet {
         margin-left: 1.5rem;
@@ -185,7 +190,7 @@ body.open aside {
     }
 
     &:hover {
-        color: v.$primarioOscuro;
+        color: v.$negro;
     }
 }
 

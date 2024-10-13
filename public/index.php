@@ -13,20 +13,20 @@
 
             <div class="servicios">
                 <div class="servicios__contenido">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bed" width="80" height="80" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6d9773" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bed" width="60" height="60" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6d9773" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M3 7v11m0 -4h18m0 4v-8a2 2 0 0 0 -2 -2h-8v6" />
                         <path d="M7 10m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
                     </svg>
     
-                    <h2>Hospedaje</h2>
+                    <h3>Hospedaje</h3>
                     <p>Disfruta de una estancia sin preocupaciones en nuestros hoteles seleccionados. Todo lo que necesitas hacer es llegar, y nosotros nos encargaremos del resto.</p>
                 </div><!-- servicios__contenido -->
 
                 <div class="border"></div>
 
                 <div class="servicios__contenido">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bus" width="80" height="80" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6d9773" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bus" width="60" height="60" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6d9773" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M6 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
                         <path d="M18 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -37,21 +37,21 @@
                         <path d="M12 5l0 5" />
                     </svg>
     
-                    <h2>Transporte</h2>
+                    <h3>Transporte</h3>
                     <p>Viaja cómodamente en nuestros autobuses climatizados, que ofrecen un recorrido redondo con todas las comodidades baños a bordo y paradas programadas para estirar las piernas y disfrutar de un refrigerio.</p>
                 </div><!-- servicios__contenido -->
 
                 <div class="border"></div>
 
                 <div class="servicios__contenido">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-lock" width="80" height="80" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6d9773" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-lock" width="60" height="60" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6d9773" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
                         <path d="M12 11m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
                         <path d="M12 12l0 2.5" />
                     </svg>
     
-                    <h2>Seguro de Viaje</h2>
+                    <h3>Seguro de Viaje</h3>
                     <p>Tu seguridad es nuestra prioridad. Por eso, todos nuestros viajeros cuentan con un seguro de viaje mientras están a bordo de nuestras unidades, para que disfrutes del viaje con total tranquilidad.</p>
                 </div><!-- servicios__contenido -->
             </div>

@@ -124,7 +124,7 @@
     }
 
     require '../../includes/funciones.php';
-    incluirTemplate('header');
+    incluirTemplate('headerAdmin');
    
 ?>
 
@@ -219,4 +219,25 @@
 
     <?php incluirTemplate('footer'); ?>
 
-    <script src="/build/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            menu();
+        })
+        
+        function toggleMenu() {
+            document.body.classList.toggle('open');
+        }
+
+        function closeMenu() {
+            document.body.classList.remove('open');
+        }
+
+        function menu() {
+            const menuButton = document.querySelector('.menu');
+            const overlay = document.querySelector('.overlay');
+
+            menuButton.addEventListener('click', toggleMenu);
+
+            overlay.addEventListener('click', closeMenu);
+        }
+    </script>

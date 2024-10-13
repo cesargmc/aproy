@@ -17,6 +17,15 @@
     require '../../includes/config/database.php';
     $db = conectarDB();
 
+    // Obtener el id del viaje desde la URL de manera segura
+    $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+    if ($id === 0) {
+        // Si el ID es inválido, redirigir o mostrar error
+        header('Location: /admin?error=invalid_id');
+        exit();
+    }
+
     // Obtener los datos del viaje
     $consulta = "SELECT * FROM viajes WHERE id = $id";
     $resultado = mysqli_query($db, $consulta);
@@ -168,7 +177,7 @@
     }
 
     require '../../includes/funciones.php';
-    incluirTemplate('header');
+    incluirTemplate('headerAdmin');
 ?>
 
 <main class="contenedor seccion">
@@ -236,7 +245,7 @@
                     </div>
                 </div>
 
-                <button type="button" class="boton" onclick="agregarActividad()">Agregar otra actividad</button>
+                <button type="button" class="boton array" onclick="agregarActividad()">Agregar otra actividad</button>
             </fieldset>
 
             <fieldset>
@@ -254,3 +263,26 @@
     </main>
 
 <?php incluirTemplate('footer'); ?>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            menu();
+        })
+        
+        function toggleMenu() {
+            document.body.classList.toggle('open');
+        }
+
+        function closeMenu() {
+            document.body.classList.remove('open');
+        }
+
+        function menu() {
+            const menuButton = document.querySelector('.menu');
+            const overlay = document.querySelector('.overlay');
+
+            menuButton.addEventListener('click', toggleMenu);
+
+            overlay.addEventListener('click', closeMenu);
+        }
+    </script>

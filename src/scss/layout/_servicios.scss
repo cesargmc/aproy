@@ -2,10 +2,10 @@
 @use 'base/mixins' as m;
 
 .servicio {
-    min-height: 70dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .servicios {
@@ -16,6 +16,11 @@
         grid-template-columns: 2fr 1fr 2fr 1fr 2fr;
         column-gap: 2rem;
     }
+}
+
+p.servicios__texto {
+    width: 50%;
+    margin-bottom: 4rem;
 }
 
 .servicios__contenido {
