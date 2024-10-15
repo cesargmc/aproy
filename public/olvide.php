@@ -36,17 +36,19 @@
             $resultado_token = mysqli_query($db, $query);
 
             if ($resultado_token) {
+                // Enviar el correo con el enlace de restablecimiento
+                $url = "http://localhost:3000/public/reestablecer.php?token=" . $token;
 
                 $mail = new PHPMailer(true);
 
                 try {
                     // Configuración del servidor SMTP
                     $mail->isSMTP();
-                    $mail->Host = $_ENV['EMAIL_HOST'];  // Servidor SMTP de Mailtrap
+                    $mail->Host = 'smtp.mailtrap.io';
                     $mail->SMTPAuth = true;
-                    $mail->Username = $_ENV['EMAIL_USER']; // Usuario SMTP
-                    $mail->Password = $_ENV['EMAIL_PASS']; // Contraseña SMTP
-                    $mail->Port = $_ENV['EMAIL_PORT'];
+                    $mail->Username = '650a67d9d9bb10'; // Usuario SMTP
+                    $mail->Password = 'b5060909a4cd15'; // Contraseña SMTP
+                    $mail->Port = 2525;
 
                     // Configuración del email
                     $mail->setFrom('noreply@mirys.com', 'Restablece tu password');
@@ -55,7 +57,7 @@
                     // Contenido del email
                     $mail->isHTML(true);
                     $mail->Subject = 'Restablece tu password';
-                    $mail->Body = "Haz click en el siguiente enlace para confirmar tu cuenta: <a href='". $_ENV['APP_URL'] ."/public/confirmar.php?resultado=2&?token=" . $token ."'>Confirmar cuenta</a>";
+                    $mail->Body = "Haz click en el siguiente enlace para restablecer tu password: <a href='$url'>Restablecer password</a>";
 
                     // Enviar el correo
                     $mail->send();

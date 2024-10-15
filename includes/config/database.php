@@ -1,7 +1,6 @@
 <?php
 
 function conectarDB() : mysqli {
-    var_dump($_ENV);
     $db = mysqli_connect(
         $_ENV['DB_HOST'] ?? 'localhost',
         $_ENV['DB_USER'] ?? 'root',

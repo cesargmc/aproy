@@ -68,17 +68,19 @@
 
 
             if ($resultado) {
+                // Enviar el email para confirmar cuenta
+                $url = "http://localhost:3000/public/confirmar.php?token=" . $token;
 
                 $mail = new PHPMailer(true);
 
                 try {
                     // Configuración del servidor
                     $mail->isSMTP();
-                    $mail->Host = $_ENV['EMAIL_HOST'];  // Servidor SMTP de Mailtrap
+                    $mail->Host = 'smtp.mailtrap.io';  // Servidor SMTP de Mailtrap
                     $mail->SMTPAuth = true;
-                    $mail->Username = $_ENV['EMAIL_USER']; // Usuario SMTP
-                    $mail->Password = $_ENV['EMAIL_PASS']; // Contraseña SMTP
-                    $mail->Port = $_ENV['EMAIL_PORT'];
+                    $mail->Username = '650a67d9d9bb10'; // Usuario SMTP
+                    $mail->Password = 'b5060909a4cd15'; // Contraseña SMTP
+                    $mail->Port = 2525;
 
                     // Configuración del email
                     $mail->setFrom('noreply@mirys.com', 'Confirmacion de Cuenta');
@@ -87,7 +89,7 @@
                     // Contenido del email
                     $mail->isHTML(true);
                     $mail->Subject = 'Confirma tu cuenta';
-                    $mail->Body = "Haz click en el siguiente enlace para confirmar tu cuenta: <a href='". $_ENV['APP_URL'] ."/public/confirmar.php?resultado=2&?token=" . $token ."'>Confirmar cuenta</a>";
+                    $mail->Body = "Haz click en el siguiente enlace para confirmar tu cuenta: <a href='$url'>Confirmar cuenta</a>";
 
                     // Enviar el email
                     $mail->send();
