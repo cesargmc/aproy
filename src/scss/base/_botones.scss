@@ -3,23 +3,23 @@
 
 
 .boton-amarillo {
-    @include m.boton($amarillo, inline-block);
+    @include m.boton(v.$amarillo, inline-block);
 }
 
 .boton-amarillo-block {
-    @include m.boton($amarillo, block);
+    @include m.boton(v.$amarillo, block);
 }
 
 .boton-verde {
-    @include m.boton($primario, inline-block);
+    @include m.boton(v.$primario, inline-block);
 }
 
 .boton-gris-block {
-    @include m.boton($grisOscuro, block);
+    @include m.boton(v.$grisOscuro, block);
     width: 100%;
 }
 
 .boton-naranja-block {
-    @include m.boton($secundario, block);
+    @include m.boton(v.$secundario, block);
     width: 100%;
 }

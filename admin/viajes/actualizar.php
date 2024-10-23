@@ -286,3 +286,5 @@
             overlay.addEventListener('click', closeMenu);
         }
     </script>
+
+<script src="/src/js/app.js"></script>

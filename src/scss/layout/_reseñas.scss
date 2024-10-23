@@ -44,7 +44,7 @@
 }
 
 .slide {
-    text-align: center;
+    text-align: left;
 
     @include m.tablet {
         padding: 0 16rem;
@@ -53,13 +53,9 @@
 }
 
 .informacion {
-    span {
-        display: block;
-    }
+    span { display: block; }
 
-    .nombre {
-        font-size: 1.5rem;
-    }
+    .nombre { font-size: 1.5rem; }
 
     .experiencia {
         font-size: 1rem;
@@ -75,6 +71,12 @@
             font-size: 1.5rem;
             color: v.$primarioOscuro;
         }
+    }
+
+    .informacion-contenido {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
     }
 }
 

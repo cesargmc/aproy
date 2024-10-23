@@ -1,19 +1,3 @@
-@import 'base/normalize';
-@import 'base/swiper';
-@import 'base/variables';
-@import 'base/globales';
-@import 'base/botones';
-
-/** UI **/
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/contenido';
-@import 'layout/servicios';
-@import 'layout/anuncios';
-@import 'layout/viaje';
-@import 'layout/reseñas';
-@import 'layout/formulario';
-
-/** Internas **/
-@import 'internas/admin';
-@import 'internas/acciones';
+@forward 'base';
+@forward 'internas';
+@forward 'layout';

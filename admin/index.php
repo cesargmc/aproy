@@ -73,8 +73,8 @@
                         <th>Id</th>
                         <th>Titulo</th>
                         <th>Imagen</th>
-                        <th>Salida</th>
-                        <th>Regreso</th>
+                        <th class="hidden">Salida</th>
+                        <th class="hidden">Regreso</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -85,8 +85,8 @@
                         <td><?php echo $viaje['id']; ?></td>
                         <td><?php echo $viaje['titulo']; ?></td>
                         <td> <img class="imagen-tabla" src="/imagenes/<?php echo $viaje['imagen']; ?>" alt=""> </td>
-                        <td><?php echo $viaje['salida']; ?></td>
-                        <td><?php echo $viaje['regreso']; ?></td>
+                        <td class="hidden"><?php echo $viaje['salida']; ?></td>
+                        <td class="hidden"><?php echo $viaje['regreso']; ?></td>
                         <td class="tabla-crud">
                             <form method="POST">
                                 <input type="hidden" name="id" value="<?php echo $viaje['id']; ?>">

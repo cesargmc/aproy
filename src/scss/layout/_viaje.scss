@@ -2,6 +2,8 @@
 @use 'base/mixins' as m;
 
 section {
+    margin: 5rem 0;
+
     .viaje-contenido {
         display: flex;
         flex-direction: column;
@@ -18,19 +20,17 @@ section {
             gap: 2rem;
         }
     }
-
-    margin: 5rem 0;
 }
 
 .contenido-lista {
+    margin-bottom: 3rem;
+
     @include m.tablet {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         text-decoration: none;
     }
-
-    margin-bottom: 3rem;
 
     .lista__informacion {
         display: flex;

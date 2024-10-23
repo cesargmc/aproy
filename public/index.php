@@ -1,4 +1,83 @@
 <?php
+    // Importar la conexion
+    require '../includes/config/database.php';
+    $db = conectarDB();
+
+    session_start();
+
+    // Consultar
+    $query = "SELECT * FROM Viajes";
+
+    // Obtener resultado
+    $resultado = mysqli_query($db, $query);
+
+    $queryMensaje = "
+    SELECT 
+        Mensaje.*, 
+        usuario.nombre AS nombre_usuario, 
+        usuario.apellido AS apellido_usuario, 
+        viajes.titulo AS titulo_viaje 
+    FROM Mensaje 
+    JOIN usuario ON Mensaje.id_usuario = usuario.id 
+    JOIN viajes ON Mensaje.id_viaje = viajes.id";
+
+    // Consultar la BD
+    $resultadoMensaje = mysqli_query($db, $queryMensaje);
+
+    // Verifica si la consulta fue exitosa
+    if (!$resultado) {
+        die("Error en la consulta: " . mysqli_error($db));
+    }
+
+    // Almacena los viajes en un array
+    $viajes = [];
+    while ($viaje = mysqli_fetch_assoc($resultado)) {
+        $viajes[] = $viaje;
+    }
+
+    // Arreglo errores
+    $errores = [];
+
+    $comentario = '';
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Verificar si el usuario está logueado
+        if (isset($_SESSION['usuario'])) {
+            $id_usuario = $_SESSION['usuario']['id'];
+            $id_viaje = $_POST['id_viaje'];
+            $comentario = $_POST['comentario'];
+
+            if(!$comentario) {
+                $errores[] = "El comentario es obligatoria";
+            }
+    
+            // Validar el límite de caracteres
+            if (strlen($comentario) > 250) {
+                header('Location: /public/index.php?resultado=4'); // Aquí puedes redirigir a un resultado de error específico
+                exit;
+            }
+    
+            // Insertar la reseña en la base de datos
+            $query = "INSERT INTO mensaje (id_viaje, id_usuario, comentario) VALUES (?, ?, ?)";
+            $stmt = $db->prepare($query);
+            if (!$stmt) {
+                die("Error en la preparación de la consulta: " . mysqli_error($db));
+            }
+            
+            $stmt->bind_param('iis', $id_viaje, $id_usuario, $comentario);
+            
+            if ($stmt->execute()) {
+                header('Location: /public/index.php?resultado=3');
+            } else {
+                header('Location: /public/index.php?resultado=2');
+            }
+            
+            $stmt->close();
+        } else {
+            header('Location: /public/index.php?resultado=1');
+        }
+    }    
+
     require '../includes/funciones.php';
     incluirTemplate('header', $inicio = true);
 ?>
@@ -60,9 +139,29 @@
         <section id="viajes" class="catalogo">
             <h2 class="texto-centrado">Próximos Viajes</h2>
 
-            <?php 
-                include '../includes/templates/anuncios.php'
-            ?>
+            <div class="seccion">
+            <?php foreach($viajes as $viaje): ?>
+                <div class="seccion__contenido">
+                    <div class="seccion-info">
+                        <h3><?php echo $viaje['titulo']; ?></h3>
+                        <div class="fechas">
+                            <div class="salida">
+                                <p class="label-fecha">Salida <span class="fecha"><?php echo $viaje['salida']; ?></span></p>
+                            </div>
+                            <div class="regreso">
+                                <p class="label-fecha">Regreso <span class="fecha"><?php echo $viaje['regreso']; ?></span></p>
+                            </div>
+                        </div>
+                        <p class="descripcion"><?php echo $viaje['descripcion']; ?></p>
+                        <div class="botones">
+                            <a class="boton btn-viaje" href="https://wa.me/8112586422?text=Hola,%20me%20gustaría%20saber%20más%20sobre%20el%20viaje.%0Ahttps://mirys.vercel.app/real14.html" target="_blank">Reserva <?php echo $viaje['titulo']; ?></a>
+                            <a href="viaje.php?id=<?php echo $viaje['id']; ?>" class="boton contacto">Ver más</a>
+                        </div>
+                    </div>
+                    <img class="seccion__img" loading="lazy" src="/imagenes/<?php echo $viaje['imagen'] ?>" alt="Imagen viaje">
+                </div>
+            <?php endforeach; ?>
+            </div>
         </section><!-- VIAJES -->
 
         <section id="reseñas" class="resenas">
@@ -71,57 +170,69 @@
             <div class="contenedor-resena">
                 <div class="resena mySwiper">
                     <div class="resena-contenido swiper-wrapper">
-                        <div class="slide swiper-slide">
-                            <img src="build/img/user.png" alt="Imagen de usuario predeterminada">
+                        <?php while($row = mysqli_fetch_assoc($resultadoMensaje) ) : ?>
+                            <div class="slide swiper-slide">
+                                <div class="informacion">
+                                    <div class="informacion-contenido">
+                                        <div class="contenido-usuario">
+                                            <span class="nombre"><?php echo $row['nombre_usuario'] . ' ' . $row['apellido_usuario']; ?></span>
+                                            <span class="experiencia"><?php echo $row['titulo_viaje']; ?></span>
+                                        </div>
 
-                            <p>3 de 3 viajes y cada vez se pone mejor esperando el próximo viaje</p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" fill="rgba(109,151,115,1)">
+                                            <path d="M4.58341 17.3211C3.55316 16.2274 3 15 3 13.0103C3 9.51086 5.45651 6.37366 9.03059 4.82318L9.92328 6.20079C6.58804 8.00539 5.93618 10.346 5.67564 11.822C6.21263 11.5443 6.91558 11.4466 7.60471 11.5105C9.40908 11.6778 10.8312 13.159 10.8312 15C10.8312 16.933 9.26416 18.5 7.33116 18.5C6.2581 18.5 5.23196 18.0095 4.58341 17.3211ZM14.5834 17.3211C13.5532 16.2274 13 15 13 13.0103C13 9.51086 15.4565 6.37366 19.0306 4.82318L19.9233 6.20079C16.588 8.00539 15.9362 10.346 15.6756 11.822C16.2126 11.5443 16.9156 11.4466 17.6047 11.5105C19.4091 11.6778 20.8312 13.159 20.8312 15C20.8312 16.933 19.2642 18.5 17.3312 18.5C16.2581 18.5 15.232 18.0095 14.5834 17.3211Z"></path>
+                                        </svg>
+                                    </div>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" fill="rgba(109,151,115,1)"><path d="M4.58341 17.3211C3.55316 16.2274 3 15 3 13.0103C3 9.51086 5.45651 6.37366 9.03059 4.82318L9.92328 6.20079C6.58804 8.00539 5.93618 10.346 5.67564 11.822C6.21263 11.5443 6.91558 11.4466 7.60471 11.5105C9.40908 11.6778 10.8312 13.159 10.8312 15C10.8312 16.933 9.26416 18.5 7.33116 18.5C6.2581 18.5 5.23196 18.0095 4.58341 17.3211ZM14.5834 17.3211C13.5532 16.2274 13 15 13 13.0103C13 9.51086 15.4565 6.37366 19.0306 4.82318L19.9233 6.20079C16.588 8.00539 15.9362 10.346 15.6756 11.822C16.2126 11.5443 16.9156 11.4466 17.6047 11.5105C19.4091 11.6778 20.8312 13.159 20.8312 15C20.8312 16.933 19.2642 18.5 17.3312 18.5C16.2581 18.5 15.232 18.0095 14.5834 17.3211Z"></path></svg>
+                                    <p><?php echo $row['comentario']; ?></p>
+                                </div>
+                            </div><!-- .swiper-slide -->
+                        <?php endwhile; ?>
+                    </div><!-- .swiper-wrapper -->
 
-                            <div class="informacion">
-                                <a href="https://www.facebook.com/share/p/zoX2DyKjZ4UH5gao/" target="_blank">
-                                    <span class="nombre">Martha Garza Sepulveda</span>
-                                    <span class="experiencia">Guadalajara, Jalisco</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="slide swiper-slide">
-                            <img src="build/img/user.png" alt="Imagen de usuario predeterminada">
-
-                            <p>Muy Recomendada, Excelente Coordinadora y Servicio👌</p>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" fill="rgba(109,151,115,1)"><path d="M4.58341 17.3211C3.55316 16.2274 3 15 3 13.0103C3 9.51086 5.45651 6.37366 9.03059 4.82318L9.92328 6.20079C6.58804 8.00539 5.93618 10.346 5.67564 11.822C6.21263 11.5443 6.91558 11.4466 7.60471 11.5105C9.40908 11.6778 10.8312 13.159 10.8312 15C10.8312 16.933 9.26416 18.5 7.33116 18.5C6.2581 18.5 5.23196 18.0095 4.58341 17.3211ZM14.5834 17.3211C13.5532 16.2274 13 15 13 13.0103C13 9.51086 15.4565 6.37366 19.0306 4.82318L19.9233 6.20079C16.588 8.00539 15.9362 10.346 15.6756 11.822C16.2126 11.5443 16.9156 11.4466 17.6047 11.5105C19.4091 11.6778 20.8312 13.159 20.8312 15C20.8312 16.933 19.2642 18.5 17.3312 18.5C16.2581 18.5 15.232 18.0095 14.5834 17.3211Z"></path></svg>
-
-                            <div class="informacion">
-                                <a href="https://www.facebook.com/share/r/kjgfjh9xYWLvHTgh/" target="_blank">
-                                    <span class="nombre">Gina Moran</span>
-                                    <span class="experiencia">Maztlán, Sinaloa</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="slide swiper-slide">
-                            <img src="build/img/user.png" alt="Imagen de usuario predeterminada">
-
-                            <p>Muchas gracias por todo, estuvo muy bien organizado, y excelente el trato.</p>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" fill="rgba(109,151,115,1)"><path d="M4.58341 17.3211C3.55316 16.2274 3 15 3 13.0103C3 9.51086 5.45651 6.37366 9.03059 4.82318L9.92328 6.20079C6.58804 8.00539 5.93618 10.346 5.67564 11.822C6.21263 11.5443 6.91558 11.4466 7.60471 11.5105C9.40908 11.6778 10.8312 13.159 10.8312 15C10.8312 16.933 9.26416 18.5 7.33116 18.5C6.2581 18.5 5.23196 18.0095 4.58341 17.3211ZM14.5834 17.3211C13.5532 16.2274 13 15 13 13.0103C13 9.51086 15.4565 6.37366 19.0306 4.82318L19.9233 6.20079C16.588 8.00539 15.9362 10.346 15.6756 11.822C16.2126 11.5443 16.9156 11.4466 17.6047 11.5105C19.4091 11.6778 20.8312 13.159 20.8312 15C20.8312 16.933 19.2642 18.5 17.3312 18.5C16.2581 18.5 15.232 18.0095 14.5834 17.3211Z"></path></svg>
-
-                            <div class="informacion">
-                                <a href="https://www.facebook.com/share/v/2EMAdGpjxR2nSxj7/" target="_blank">
-                                    <span class="nombre">Ana Coronado</span>
-                                    <span class="experiencia">Mazatlán, Sinaloa</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                     <div class="swiper-button-next nav-btn"></div>
                     <div class="swiper-button-prev nav-btn"></div>
                     <div class="swiper-pagination swp"></div>
-                </div>
-            </div>
+                </div><!-- .resena -->
+            </div><!-- .contenedor-resena -->
         </section><!-- RESEÑAS -->
+
+        <section id="mensaje" class="mensaje">
+            <h2 class="texto-centrado">Mensaje</h2>
+
+            <?php 
+                // Verificar si el parámetro 'resultado' está en la URL
+                $resultado = isset($_GET['resultado']) ? intval($_GET['resultado']) : null;
+            ?>
+
+            <div class="login">
+                <?php if(intval($resultado) === 1): ?>
+                    <p class="alerta error">Debes iniciar sesión para dejar una reseña.</p>
+                <?php elseif (intval($resultado) === 2): ?>
+                    <p class="alerta error">Error al guardar la reseña: </p>
+                <?php elseif (intval($resultado) === 3): ?>
+                    <p class="alerta exito">Reseña guardada exitosamente.</p>
+                <?php elseif (intval($resultado) === 4): ?>
+                    <p class="alerta error">El comentario no puede exceder los 300 caracteres.</p>
+                <?php endif; ?>
+
+
+                <form class="formulario acciones" method="POST" action="/public/index.php">
+                <label for="comentario">Comentario:</label>
+                <textarea id="comentario" name="comentario" placeholder="Escribe tu reseña aquí..." required maxlength="250"></textarea>
+
+                    <label for="viaje">Viaje:</label>
+                    <select name="id_viaje" required>
+                        <option disabled selected value="">-- Seleccione un Viaje --</option>
+                        <?php foreach($viajes as $row) : ?>
+                            <option value="<?php echo $row['id']; ?>"><?php echo $row['titulo']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+
+                    <input type="submit" value="Enviar Reseña" class="boton boton-verde">
+                </form>
+            </div>
+        </section>
     </main>
 
     <?php incluirTemplate('footer'); ?>

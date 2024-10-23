@@ -64,7 +64,7 @@ body.open .menu svg:last-child {
     display: block;
 }
 
-.overlay {
+.overlay-header {
     position: fixed;
     z-index: 2;
     top: 0;
@@ -78,9 +78,9 @@ body.open .menu svg:last-child {
     transition: 0.3s;
 }
 
-body.open .overlay {
+body.open .overlay-header {
     visibility: visible;
-    opacity: 1;
+    opacity: 0;
 }
 
 aside {
@@ -116,6 +116,8 @@ body.open aside {
 
 .barra {
     text-align: center;
+    display: flex;
+    padding: 0 0 0 1.5rem;
 
     @include m.tablet {
         display: flex;
