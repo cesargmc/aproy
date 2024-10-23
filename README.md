@@ -5,7 +5,7 @@
 <h1 align="center">Miry's Viajes</h1>
 <p align="center">La página <a href="https://mirys.vercel.app/" target="_blank">Miry's Viajes</a> es una página hecha en PHP para el proyecto de Administración DE Proyectos de Software</p>
 
-<img src="src/img/website.png">
+<img src="">
 
 ## ✏️ Cosas que aprendí
 
